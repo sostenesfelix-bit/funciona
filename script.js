@@ -12,7 +12,7 @@ function animacaojogo() {
     }, 2000);
 
 }
-function animacadiao() {
+function animacaodia() {
 
     const img = document.getElementById("figurinha");
 

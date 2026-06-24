@@ -1,37 +1,164 @@
-function movePlayer(direction){
+const player = document.getElementById("player");
+const scoreText = document.getElementById("score");
+const quiz = document.getElementById("quiz");
+const finalScreen = document.getElementById("final");
 
-    if(direction === "left"){
-        x -= 15;
-        player.style.transform = "scaleX(1)";
+let x = 50;
+let y = 300;
+let score = 0;
+let currentStar;
+
+player.style.left = x + "px";
+player.style.top = y + "px";
+
+function beep(freq) {
+    try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+
+        const osc = ctx.createOscillator();
+        osc.frequency.value = freq;
+
+        osc.connect(ctx.destination);
+
+        osc.start();
+        osc.stop(ctx.currentTime + 0.1);
+    } catch (e) {
+        console.log("Áudio bloqueado pelo navegador");
+    }
+}
+
+function createStar() {
+
+    if (currentStar) {
+        currentStar.remove();
     }
 
-    if(direction === "right"){
-        x += 15;
-        player.style.transform = "scaleX(-1)";
-    }
+    const star = document.createElement("div");
 
-    if(direction === "up") y -= 15;
-    if(direction === "down") y += 15;
+    star.className = "star";
+    star.innerHTML = "⭐";
 
-    x = Math.max(0, Math.min(window.innerWidth - 50, x));
-    y = Math.max(0, Math.min(window.innerHeight - 50, y));
+    const game = document.getElementById("game");
 
-    player.style.left = x + "px";
-    player.style.top = y + "px";
+    star.style.left =
+        Math.random() * (game.clientWidth - 50) + "px";
 
-    if(currentStar && collision(player,currentStar)){
+    star.style.top =
+        Math.random() * (game.clientHeight - 150) + "px";
+
+    game.appendChild(star);
+
+    currentStar = star;
+}
+
+function collision(a, b) {
+
+    const r1 = a.getBoundingClientRect();
+    const r2 = b.getBoundingClientRect();
+
+    return !(
+        r1.right < r2.left ||
+        r1.left > r2.right ||
+        r1.bottom < r2.top ||
+        r1.top > r2.bottom
+    );
+}
+
+function checkStar() {
+
+    if (currentStar && collision(player, currentStar)) {
 
         beep(700);
 
         score++;
         scoreText.textContent = score;
 
-        if(score >= 10){
+        if (score >= 10) {
+
             quiz.style.display = "flex";
+
             currentStar.remove();
+
             return;
         }
 
         createStar();
     }
 }
+
+document.addEventListener("keydown", (e) => {
+
+    if (quiz.style.display === "flex") {
+        return;
+    }
+
+    if (e.key === "ArrowUp") y -= 15;
+    if (e.key === "ArrowDown") y += 15;
+    if (e.key === "ArrowLeft") {
+        x -= 15;
+        player.style.transform = "scaleX(1)";
+    }
+    if (e.key === "ArrowRight") {
+        x += 15;
+        player.style.transform = "scaleX(-1)";
+    }
+
+    x = Math.max(0, Math.min(window.innerWidth - 60, x));
+    y = Math.max(0, Math.min(window.innerHeight - 60, y));
+
+    player.style.left = x + "px";
+    player.style.top = y + "px";
+
+    checkStar();
+});
+
+function movePlayer(direction) {
+
+    if (quiz.style.display === "flex") {
+        return;
+    }
+
+    if (direction === "left") {
+        x -= 15;
+        player.style.transform = "scaleX(1)";
+    }
+
+    if (direction === "right") {
+        x += 15;
+        player.style.transform = "scaleX(-1)";
+    }
+
+    if (direction === "up") {
+        y -= 15;
+    }
+
+    if (direction === "down") {
+        y += 15;
+    }
+
+    x = Math.max(0, Math.min(window.innerWidth - 60, x));
+    y = Math.max(0, Math.min(window.innerHeight - 60, y));
+
+    player.style.left = x + "px";
+    player.style.top = y + "px";
+
+    checkStar();
+}
+
+function answer(correct) {
+
+    if (correct) {
+
+        beep(1000);
+
+        quiz.style.display = "none";
+        finalScreen.style.display = "flex";
+
+    } else {
+
+        alert("Hmm... tenta de novo 😅");
+
+    }
+}
+
+createStar();

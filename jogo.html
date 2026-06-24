@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jogo pega estelha</title>
+    <link rel="stylesheet" href="jogo.css">
+</head>
+
+<div id="controls">
+    <button onclick="movePlayer('up')">⬆️</button>
+
+    <div class="row">
+        <button onclick="movePlayer('left')">⬅️</button>
+        <button onclick="movePlayer('down')">⬇️</button>
+        <button onclick="movePlayer('right')">➡️</button>
+    </div>
+</div>
+<body>
+
+<div id="game">
+
+    <div class="cloud" style="top:50px;">☁️</div>
+    <div class="cloud" style="top:150px; animation-delay:-10s;">☁️</div>
+
+    <div id="hud">
+        ⭐ Estrelas: <span id="score">0</span>/10
+    </div>
+
+    <div id="player"></div>
+
+    <div id="quiz">
+        <h2> Pergunta Especial </h2>
+        <p>Quem é a pessoa mais incrivel</p>
+
+        <button onclick="answer(true)">Você (⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)
+        </button>
+        <button onclick="answer(false)">Outra pessoa</button>
+    </div>
+
+    <div id="final">
+        <h1>🎉 alegriaaaa fim 🎉 </h1>
+
+        <h2>Você completou a aventura?? (alguma coisa desse tipo )</h2>
+
+        <p>
+            Entre todas as estrelas que você encontrou,
+            a mais brilhante continua sendo você.
+        </p>
+    </div>
+
+</div>
+
+<script src="jogo.js"></script>
+</body>
+</html>

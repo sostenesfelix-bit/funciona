@@ -1,0 +1,142 @@
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#111;
+    font-family:Arial, sans-serif;
+}
+
+.container{
+    text-align:center;
+}
+
+.mensagem{
+    color:white;
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background-image:url("fundo.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    font-family:Arial, sans-serif;
+    
+    
+}
+
+.titulo{
+    font-size:22px;
+    margin:0;
+}
+
+.subtexto{
+    font-size:12px;
+    opacity:0.8;
+    margin:0;
+}
+
+.caixa{
+    width:250px; /* menor */
+    padding:15px;
+
+    border:2px solid rgba(255,255,255,0.5);
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.05); /* mais transparente */
+    backdrop-filter:blur(4px);
+
+    color:white;
+    text-align:center;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+}
+
+button{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+#figurinha{
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    width:80px;
+    z-index:9999;
+}
+
+.animar{
+    display:block !important;
+    animation:girarCrescer 2s forwards;
+}
+
+@keyframes girarCrescer{
+    0%{
+        transform:translate(-50%, -50%) scale(0.2) rotate(0deg);
+    }
+
+    100%{
+        transform:translate(-50%, -50%) scale(3) rotate(720deg);
+    }
+}
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background-image:url("fliz.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    font-family:Arial, sans-serif;
+}
+
+@keyframes pulsar{
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.5);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+.sol{
+    position:fixed;
+    font-size:30px; /* menor */
+    animation:pulsar 2s infinite;
+}
+
+.sol1{top:5%; left:10%;}
+.sol2{top:15%; right:15%;}
+.sol3{top:40%; left:5%;}
+.sol4{top:60%; right:10%;}
+.sol5{bottom:15%; left:20%;}
+.sol6{bottom:10%; right:25%;}
+
+

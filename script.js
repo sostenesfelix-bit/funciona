@@ -1,4 +1,4 @@
-function animacao() {
+function animacao1() {
 
     const img = document.getElementById("figurinha");
 
@@ -12,7 +12,7 @@ function animacao() {
     }, 2000);
 
 }
-function animacao() {
+function animacao2() {
 
     const img = document.getElementById("figurinha");
 
@@ -25,7 +25,7 @@ function animacao() {
     }, 2000);
 }
 
-function animacao() {
+function animacao3() {
 
     const img = document.getElementById("figurinha");
 

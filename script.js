@@ -1,4 +1,4 @@
-function animacao1diaum() {
+function animacaodiaum() {
 
     const img = document.getElementById("figurinha");
 

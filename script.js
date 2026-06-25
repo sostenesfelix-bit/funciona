@@ -1,4 +1,4 @@
-function animacaojogo() {
+function animacao() {
 
     const img = document.getElementById("figurinha");
 
@@ -12,7 +12,7 @@ function animacaojogo() {
     }, 2000);
 
 }
-function animacaodia() {
+function animacao() {
 
     const img = document.getElementById("figurinha");
 
@@ -22,5 +22,18 @@ function animacaodia() {
 
     setTimeout(() => {
         window.location.href = "pergunta.html";
+    }, 2000);
+}
+
+function animacao() {
+
+    const img = document.getElementById("figurinha");
+
+    img.classList.remove("animar");
+    void img.offsetWidth;
+    img.classList.add("animar");
+
+    setTimeout(() => {
+        window.location.href = "pergunta2.html";
     }, 2000);
 }

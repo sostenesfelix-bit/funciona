@@ -1,84 +1,92 @@
 body{
     margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#111;
-    font-family:Arial, sans-serif;
-}
+    min-height:100vh;
 
-.container{
-    text-align:center;
-}
-
-.mensagem{
-    color:white;
-    font-size:24px;
-    margin-bottom:20px;
-}
-
-body{
-    margin:0;
-    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
 
-    background-image:url("fundo.png");
+    background-image:url("fliz.jpg");
     background-size:cover;
     background-position:center;
-    background-repeat:no-repeat;
 
     font-family:Arial, sans-serif;
-    
-    
-}
-
-.titulo{
-    font-size:22px;
-    margin:0;
-}
-
-.subtexto{
-    font-size:12px;
-    opacity:0.8;
-    margin:0;
 }
 
 .caixa{
-    width:250px; /* menor */
-    padding:15px;
+    width:350px;
+    max-width:90%;
 
-    border:2px solid rgba(255,255,255,0.5);
-    border-radius:20px;
+    padding:25px;
 
-    background:rgba(255,255,255,0.05); /* mais transparente */
-    backdrop-filter:blur(4px);
+    border-radius:25px;
 
-    color:white;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(8px);
+
     text-align:center;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:12px;
+    color:white;
 }
 
-button{
-    padding:12px 25px;
-    font-size:18px;
+.botoes{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+    margin-top:20px;
+}
+
+.botao-sol,
+.botao-planeta{
+    width:90px;
+    height:90px;
+
     border:none;
-    border-radius:10px;
+    border-radius:50%;
+
     cursor:pointer;
+
+    font-size:14px;
+    font-weight:bold;
+}
+
+.botao-sol{
+    background:gold;
+    color:black;
+
+    box-shadow:0 0 25px gold;
+
+    animation:pulsar 2s infinite;
+}
+
+.botao-planeta{
+    background:radial-gradient(circle,#4facfe,#0066ff);
+
+    color:white;
+
+    box-shadow:0 0 20px #4facfe;
+}
+
+.botao-sol:hover,
+.botao-planeta:hover{
+    transform:scale(1.1);
+}
+
+@keyframes pulsar{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+    100%{transform:scale(1);}
 }
 
 #figurinha{
     display:none;
     position:fixed;
+
     top:50%;
     left:50%;
+
     width:80px;
+
     z-index:9999;
 }
 
@@ -89,30 +97,29 @@ button{
 
 @keyframes girarCrescer{
     0%{
-        transform:translate(-50%, -50%) scale(0.2) rotate(0deg);
+        transform:translate(-50%,-50%) scale(.2) rotate(0deg);
     }
 
     100%{
-        transform:translate(-50%, -50%) scale(3) rotate(720deg);
+        transform:translate(-50%,-50%) scale(3) rotate(720deg);
     }
 }
 
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+@media(max-width:600px){
 
-    background-image:url("fliz.jpg");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
+    .caixa{
+        width:90%;
+    }
 
-    font-family:Arial, sans-serif;
+    .botao-sol,
+    .botao-planeta{
+        width:80px;
+        height:80px;
+        font-size:12px;
+    }
 }
 
-@keyframes pulsar{
+@keyframes pulsarSol{
     0%{
         transform:scale(1);
     }
@@ -126,17 +133,18 @@ body{
     }
 }
 
+
 .sol{
     position:fixed;
-    font-size:30px; /* menor */
-    animation:pulsar 2s infinite;
+    font-size:18px;
+    animation:pulsarSol 3s infinite;
+    pointer-events:none;
+    opacity:0.7;
 }
 
-.sol1{top:5%; left:10%;}
-.sol2{top:15%; right:15%;}
-.sol3{top:40%; left:5%;}
-.sol4{top:60%; right:10%;}
-.sol5{bottom:15%; left:20%;}
-.sol6{bottom:10%; right:25%;}
-
-
+.sol1{top:3%; left:5%;}
+.sol2{top:10%; right:8%;}
+.sol3{top:35%; left:2%;}
+.sol4{top:55%; right:3%;}
+.sol5{bottom:20%; left:10%;}
+.sol6{bottom:5%; right:15%;}

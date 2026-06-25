@@ -1,4 +1,4 @@
-function animacao1() {
+function animacao1diaum() {
 
     const img = document.getElementById("figurinha");
 
@@ -12,7 +12,7 @@ function animacao1() {
     }, 2000);
 
 }
-function animacao2() {
+function animacaodiadois() {
 
     const img = document.getElementById("figurinha");
 
@@ -25,7 +25,7 @@ function animacao2() {
     }, 2000);
 }
 
-function animacao3() {
+function animacaodistres() {
 
     const img = document.getElementById("figurinha");
 
